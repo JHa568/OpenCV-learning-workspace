@@ -1,2 +1,2 @@
 # OpenCV-learning-workspace
-Project for University class
+Project for University course
