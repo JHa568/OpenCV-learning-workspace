@@ -28,5 +28,6 @@ class Morphology():
         return closing
 
 
-
+    def test(): -> None
+        return None
     # Sci-kit image
