@@ -27,4 +27,6 @@ class Morphology():
         closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
         return closing
 
+
+
     # Sci-kit image
