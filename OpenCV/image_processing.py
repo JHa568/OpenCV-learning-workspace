@@ -36,16 +36,6 @@ def image_thresholding(img):
         #cv.imshow("original image", original)
         return cvted_img, processed_img, original
 
-def image_morphing_dialate(img):
-    morph = Morphology()
-    dialated_img = morph.dialate(img)
-    return dialated_img
-
-def image_morphing_erode(img):
-    morph = Morphology()
-    eroded_img = morph.erode(img)
-    return eroded_img
-
 def setup() -> None:
     img = cv.imread("block.jpg")
     img_resized = cv.resize(img, (window_height, window_height))
@@ -54,13 +44,16 @@ def setup() -> None:
         sys.exit("Could not read the image")
 
     ####
+    morph = Morphology()
     cvted_img, processed_img, original = image_thresholding(img_resized)
-    dialate = image_morphing_dialate(processed_img)
-    erode = image_morphing_erode(processed_img)
+    opening = morph.opening(processed_img)
+    closing = morph.closing(opening)
     ####
     cv.imshow("Processed", processed_img)
-    #cv.imshow("dialated (5, 5)", dialate)
-    #cv.imshow("eroded (5, 5)", erode)
+    cv.imshow("opening", opening)
+    cv.imshow("closing", closing)
+
+
     k = cv.waitKey(0)
 
 if "__main__" == __name__:

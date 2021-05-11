@@ -34,13 +34,14 @@ class Filters():
         return blur
 
     # Removes minor noise throughout the image
-    def guassian_filter(self, img):
-        blur = cv.GaussianBlue(img, (5,5), 0)
+    def guassian_filter(self, img, kernal=(5,5)):
+        #
+        blur = cv.GaussianBlur(img, kernal, 0)
         return blur
 
     # Softens the image
-    def averaging(self, img):
-        blur = cv.blur(img, (5,5))
+    def averaging(self, img, kernal=(5,5)):
+        blur = cv.blur(img, kernal)
         return blur
 
     # Very aggressive bluring
