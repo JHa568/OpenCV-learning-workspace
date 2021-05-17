@@ -28,4 +28,10 @@ class Morphology():
         closing = cv.morphologyEx(img, cv.MORPH_CLOSE, kernel)
         return closing
 
+<<<<<<< HEAD
+=======
+
+    def test(): -> None
+        return None
+>>>>>>> 87cc6619e4b274b67de7a219ddf76ceed56c1461
     # Sci-kit image
