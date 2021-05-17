@@ -7,7 +7,6 @@ class Edge_Detection():
 
     # OpenCV
     def canny_detect(self, img):
-        cpy_read = cv.imread(img)
 
         # @param - image, high bound, low bound
         # Doc for Canny Algorithm is:
