@@ -37,7 +37,7 @@ def image_thresholding(img):
         return cvted_img, processed_img, original
 
 def setup() -> None:
-    img = cv.imread("uniq.jpeg")
+    img = cv.imread("block.jpg")
     img_resized = cv.resize(img, (window_height, window_height))
 
     if img is None:
@@ -46,12 +46,15 @@ def setup() -> None:
     # ed = Edge_Detection()
     # edge = ed.canny_detect(img_resized)
     # cv.imshow('edge', edge)
-    corner = Corner_Detection()
-    cd = corner.detect(img_resized)
+    # corner = Corner_Detection()
+    # cd = corner.detect(img_resized)
+    #
+    # img_resized[cd>0.009*cd.max()]=[0,0,255]
+    #
+    # cv.imshow('test', img_resized)
 
-    img_resized[cd>0.009*cd.max()]=[0,0,255]
-
-    cv.imshow('test',img_resized)
+    c, p, o = image_thresholding(img_resized)
+    cv.imshow("Processed", p)
     '''
     morph = Morphology()
     cvted_img, processed_img, original = image_thresholding(img_resized)
