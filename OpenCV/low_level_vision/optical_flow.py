@@ -21,7 +21,7 @@ class optical_flow():
         flow = cv.calcOpticalFlowFarneback(prev_img, next_img, flow, pry_scale, lvl, winsize, iterations, poly_n, poly_sigma, flags)
         # Changes the flow to polar coordinates
         mag, ang = cv.cartToPolar(flow[...,0], flow[...,1])
-        # Makes the hue value ang*180/np.pi/2
+        # Makes the hue value ang*180/np.pi/2. what angle did the frame update to
         hsv[...,0] = ang*180/np.pi/2
         # Makes the value is normalised.
         hsv[...,2] = cv.normalize(mag,None,0,255,cv.NORM_MINMAX)
