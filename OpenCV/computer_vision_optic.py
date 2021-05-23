@@ -1,6 +1,6 @@
 import numpy as np
-from low_level_vision.optical_flow import optical_flow
 import cv2 as cv
+from low_level_vision.optical_flow import optical_flow
 
 cap = cv.VideoCapture(cv.samples.findFile("security.mp4"))
 
@@ -22,8 +22,9 @@ while True:
     # calculate optical flow
     # Dense flow -> optical_flow.Denseflow(old_gray, frame_gray, hsv)#
     # Sparse flow -> optical_flow.Sparseflow(frame, old_frame, old_gray, frame_gray)#
-    flow_img = optical_flow.Sparseflow(frame, old_frame, old_gray, frame_gray)
-    cv.imshow('frame', flow_img)
+    flow_img = optical_flow.Denseflow(old_gray, frame_gray, hsv)
+    cv.imshow('optical_flow', flow_img)
+    cv.imshow('frame', frame_gray)
 
     k = cv.waitKey(30) & 0xff
     if k == 27:
