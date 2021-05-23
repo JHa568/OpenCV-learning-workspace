@@ -19,10 +19,12 @@ optical_flow = optical_flow()
 while True:
     ret,frame = cap.read()
     frame_gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-    # calculate optical flow
+    # Calculate optical flow
     # Dense flow -> optical_flow.Denseflow(old_gray, frame_gray, hsv)#
     # Sparse flow -> optical_flow.Sparseflow(frame, old_frame, old_gray, frame_gray)#
     flow_img = optical_flow.Sparseflow(frame, old_frame, old_gray, frame_gray)
+
+    ### FRAMES ###
     cv.imshow('optical_flow', flow_img)
     cv.imshow('frame', frame_gray)
 
