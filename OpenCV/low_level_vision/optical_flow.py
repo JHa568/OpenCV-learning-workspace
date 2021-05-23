@@ -46,13 +46,11 @@ class optical_flow():
                 self.good_new = p1[st==1]
                 self.good_old = p0[st==1]
 
-            # draw the tracks
+            # draw the markers
             for i,(new,old) in enumerate(zip(self.good_new, self.good_old)):
                 a,b = new.ravel()
-                c,d = old.ravel()
-                mask = cv.line(mask, (int(a),int(b)),(int(c),int(d)), color[i].tolist(), 2)
                 frame = cv.circle(frame,(int(a),int(b)),5,color[i].tolist(),-1)
 
-            img = cv.add(frame,mask)
+            img = cv.add(frame, mask)
             p0 = self.good_new.reshape(-1,1,2)
             return img

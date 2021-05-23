@@ -22,7 +22,7 @@ while True:
     # calculate optical flow
     # Dense flow -> optical_flow.Denseflow(old_gray, frame_gray, hsv)#
     # Sparse flow -> optical_flow.Sparseflow(frame, old_frame, old_gray, frame_gray)#
-    flow_img = optical_flow.Denseflow(old_gray, frame_gray, hsv)
+    flow_img = optical_flow.Sparseflow(frame, old_frame, old_gray, frame_gray)
     cv.imshow('optical_flow', flow_img)
     cv.imshow('frame', frame_gray)
 
