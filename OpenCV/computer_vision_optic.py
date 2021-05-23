@@ -3,7 +3,7 @@ import cv2 as cv
 from low_level_vision.optical_flow import optical_flow
 
 # cv.samples.findFile("security.mp4")
-cap = cv.VideoCapture(0)
+cap = cv.VideoCapture(cv.samples.findFile("security.mp4"))
 
 # Create some random colors
 color = np.random.randint(0,255,(100,3))
