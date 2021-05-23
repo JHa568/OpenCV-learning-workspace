@@ -52,21 +52,27 @@ def setup() -> None:
     # img_resized[cd>0.009*cd.max()]=[0,0,255]
     #
     # cv.imshow('test', img_resized)
-
-    c, p, o = image_thresholding(img_resized)
-    cv.imshow("Processed", p)
-    '''
     morph = Morphology()
+    ed = Edge_Detection()
+    corner = Corner_Detection()
     cvted_img, processed_img, original = image_thresholding(img_resized)
+
+    cd = corner.detect(img_resized)
+    edge = ed.canny_detect(img_resized)
     opening = morph.opening(processed_img)
     closing = morph.closing(opening)
-    '''
+
     ####
-    '''
+
     cv.imshow("Processed", processed_img)
-    cv.imshow("opening", opening)
-    cv.imshow("closing", closing)
-    '''
+    cv.imshow("HSV image", cvted_img)
+    cv.imshow("Opening", opening)
+    cv.imshow("Closing", closing)
+    cv.imshow("Edge", edge)
+    cv.imshow("original", original)
+
+    img_resized[cd>0.009*cd.max()]=[0,0,255] # red dots
+    cv.imshow('Corner detect', img_resized)
 
     k = cv.waitKey(0)
 
