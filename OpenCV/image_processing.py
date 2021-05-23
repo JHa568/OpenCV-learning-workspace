@@ -32,8 +32,7 @@ def image_thresholding(img):
                                                                     L_h,
                                                                     L_s,
                                                                     L_v)
-        #cv.imshow("hsv img", cvted_img)
-        #cv.imshow("original image", original)
+
         return cvted_img, processed_img, original
 
 def setup() -> None:
@@ -43,15 +42,6 @@ def setup() -> None:
     if img is None:
         sys.exit("Could not read the image")
 
-    # ed = Edge_Detection()
-    # edge = ed.canny_detect(img_resized)
-    # cv.imshow('edge', edge)
-    # corner = Corner_Detection()
-    # cd = corner.detect(img_resized)
-    #
-    # img_resized[cd>0.009*cd.max()]=[0,0,255]
-    #
-    # cv.imshow('test', img_resized)
     morph = Morphology()
     ed = Edge_Detection()
     corner = Corner_Detection()
