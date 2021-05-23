@@ -15,8 +15,8 @@ To execute the image_processing
 python3 image_processing.py
 ```
 
-To execute the computer vision algorithm
+To execute the computer vision optical flow algorithm
 
 ```
-python3 computer_vision.py
+python3 computer_vision_optic.py
 ```
