@@ -32,9 +32,9 @@ class optical_flow():
             # Create some random colors
             color = np.random.randint(0,255,(100,3)) # tracker markers
             p0 = cv.goodFeaturesToTrack(old_gray, mask = None, maxCorners = 100,
-                                                               qualityLevel = 0.3,
-                                                               minDistance = 7,
-                                                               blockSize = 7 )
+                                                               qualityLevel = 0.1,
+                                                               minDistance = 30,
+                                                               blockSize = 15 )
             # Create a mask image for drawing purposes
             mask = np.zeros_like(old_frame)
 

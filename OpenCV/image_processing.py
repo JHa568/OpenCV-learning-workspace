@@ -51,11 +51,15 @@ def setup() -> None:
     edge = ed.canny_detect(img_resized)
     opening = morph.opening(processed_img)
     closing = morph.closing(opening)
+    erode = morph.erode(processed_img)
+    dialate = morph.dialate(processed_img)
 
     ####
-
+    cv.imshow("original", img_resized)
     cv.imshow("Processed", processed_img)
     cv.imshow("HSV image", cvted_img)
+    cv.imshow("Erode", erode)
+    cv.imshow("Dialate", dialate)
     cv.imshow("Opening", opening)
     cv.imshow("Closing", closing)
     cv.imshow("Edge", edge)
