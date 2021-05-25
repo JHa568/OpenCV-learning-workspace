@@ -45,7 +45,8 @@ class Filters():
         return blur
 
     # Very aggressive bluring
-    def median_blur(self, img):
-        blur = cv.medianBlur(img, 5)
+    def median_blur(self, img, param=5):
+        blur = cv.medianBlur(img, param)
+        return blur 
 
     # Sci-kit image

@@ -36,7 +36,7 @@ def image_thresholding(img):
         return cvted_img, processed_img, original
 
 def setup() -> None:
-    if len(sys.argv) > 3:
+    if len(sys.argv) > 2:
         print("invalid arguments")
 
     else:
