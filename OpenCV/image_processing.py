@@ -36,39 +36,44 @@ def image_thresholding(img):
         return cvted_img, processed_img, original
 
 def setup() -> None:
-    img = cv.imread("block.jpg")
-    img_resized = cv.resize(img, (window_height, window_height))
+    if len(sys.argv) > 3:
+        print("invalid arguments")
 
-    if img is None:
-        sys.exit("Could not read the image")
+    else:
 
-    morph = Morphology()
-    ed = Edge_Detection()
-    corner = Corner_Detection()
-    cvted_img, processed_img, original = image_thresholding(img_resized)
+        img = cv.imread(sys.argv[1])
+        img_resized = cv.resize(img, (window_height, window_height))
 
-    cd = corner.detect(img_resized)
-    edge = ed.canny_detect(img_resized)
-    opening = morph.opening(processed_img)
-    closing = morph.closing(opening)
-    erode = morph.erode(processed_img)
-    dialate = morph.dialate(processed_img)
+        if img is None:
+            sys.exit("Could not read the image")
 
-    ####
-    cv.imshow("original", img_resized)
-    cv.imshow("Processed", processed_img)
-    cv.imshow("HSV image", cvted_img)
-    cv.imshow("Erode", erode)
-    cv.imshow("Dialate", dialate)
-    cv.imshow("Opening", opening)
-    cv.imshow("Closing", closing)
-    cv.imshow("Edge", edge)
-    cv.imshow("original", original)
+        morph = Morphology()
+        ed = Edge_Detection()
+        corner = Corner_Detection()
+        cvted_img, processed_img, original = image_thresholding(img_resized)
 
-    img_resized[cd>0.009*cd.max()]=[0,0,255] # red dots
-    cv.imshow('Corner detect', img_resized)
+        cd = corner.detect(img_resized)
+        edge = ed.canny_detect(img_resized)
+        opening = morph.opening(processed_img)
+        closing = morph.closing(opening)
+        erode = morph.erode(processed_img)
+        dialate = morph.dialate(processed_img)
 
-    k = cv.waitKey(0)
+        ####
+        cv.imshow("original", img_resized)
+        cv.imshow("Processed", processed_img)
+        cv.imshow("HSV image", cvted_img)
+        cv.imshow("Erode", erode)
+        cv.imshow("Dialate", dialate)
+        cv.imshow("Opening", opening)
+        cv.imshow("Closing", closing)
+        cv.imshow("Edge", edge)
+        cv.imshow("original", original)
+
+        img_resized[cd>0.009*cd.max()]=[0,0,255] # red dots
+        cv.imshow('Corner detect', img_resized)
+
+        k = cv.waitKey(0)
 
 if "__main__" == __name__:
     setup()
